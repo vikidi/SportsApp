@@ -41,6 +41,28 @@ services:
     networks:
       - devnetwork
 
+  frontend:
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    depends_on:
+      - mongodb
+      - backend
+    ports:
+      - 4200:4200
+      - 49153:49153
+    command: npm start
+    volumes:
+      - ./frontend/src:/home/app/src
+    networks:
+      - devnetwork
+
 volumes:
   mongodbdata:
     driver: local
