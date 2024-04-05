@@ -1,0 +1,6 @@
+# Database init script
+database/init-mongo.js
+
+# Database secrets
+database/mongo-root-user
+database/mongo-root-pass

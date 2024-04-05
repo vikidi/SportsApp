@@ -1,0 +1,27 @@
+version: "3.9"
+
+services:
+  mongodb:
+    image: mongo:7.0.8
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017-27019:27017-27019"
+    environment:
+      - MONGO_INITDB_DATABASE=sports
+      - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongo-root-user
+      - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-pass
+    volumes:
+      - ./database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./database/mongo-root-user:/run/secrets/mongo-root-user:ro
+      - ./database/mongo-root-pass:/run/secrets/mongo-root-pass:ro
+      - mongodbdata:/data/db
+    networks:
+      - devnetwork
+
+volumes:
+  mongodbdata:
+    driver: local
+
+networks:
+  devnetwork:
