@@ -19,6 +19,28 @@ services:
     networks:
       - devnetwork
 
+  backend:
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    env_file:
+      - ./backend/.env.development.local
+    ports:
+      - 5050:5050
+    command: npm start
+    volumes:
+      - ./backend/src:/home/app/src
+    networks:
+      - devnetwork
+
 volumes:
   mongodbdata:
     driver: local
