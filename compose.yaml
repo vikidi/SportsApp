@@ -12,9 +12,9 @@ services:
       - MONGO_INITDB_ROOT_USERNAME_FILE=/run/secrets/mongo-root-user
       - MONGO_INITDB_ROOT_PASSWORD_FILE=/run/secrets/mongo-root-pass
     volumes:
-      - ./database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-      - ./database/mongo-root-user:/run/secrets/mongo-root-user:ro
-      - ./database/mongo-root-pass:/run/secrets/mongo-root-pass:ro
+      - ./database/dev/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+      - ./database/dev/mongo-root-user:/run/secrets/mongo-root-user:ro
+      - ./database/dev/mongo-root-pass:/run/secrets/mongo-root-pass:ro
       - mongodbdata:/data/db
     networks:
       - devnetwork
