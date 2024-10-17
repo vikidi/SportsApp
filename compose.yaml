@@ -1,9 +1,7 @@
-version: "3.9"
-
 services:
   mongodb:
     image: mongo:7.0.8
-    container_name: mongodb
+    container_name: sports-mongodb
     restart: always
     ports:
       - "27017-27019:27017-27019"
@@ -20,7 +18,7 @@ services:
       - devnetwork
 
   backend:
-    image: backend
+    image: sports-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -42,7 +40,7 @@ services:
       - devnetwork
 
   frontend:
-    image: frontend
+    image: sports-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile

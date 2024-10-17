@@ -1,9 +1,7 @@
-version: "3.9"
-
 services:
   mongodb-test:
     image: mongo:7.0.8
-    container_name: mongodb-test
+    container_name: sports-mongodb-test
     restart: always
     ports:
       - "27020-27022:27017-27019"
