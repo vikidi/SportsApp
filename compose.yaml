@@ -33,7 +33,7 @@ services:
       - ./backend/.env.development.local
     ports:
       - 5050:5050
-    command: npm start
+    command: npm run dev
     volumes:
       - ./backend/src:/home/app/src
     networks:

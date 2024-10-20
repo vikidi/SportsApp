@@ -17,6 +17,17 @@ services:
     networks:
       - testnetwork
 
+  backend:
+    depends_on:
+      - mongodb
+      - mongodb-test
+
+  frontend:
+    depends_on:
+      - mongodb
+      - mongodb-test
+      - backend
+
 volumes:
   mongodbtestdata:
     driver: local
