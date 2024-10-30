@@ -3,5 +3,5 @@
 Overall repository for my Sports App related sub-repositories
 
 ```
-docker-compose -f compose.yaml -f compose.dev.yaml up
+docker-compose -f compose.development.yaml -f compose.testing.yaml up
 ```
