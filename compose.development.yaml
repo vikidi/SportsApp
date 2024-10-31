@@ -29,6 +29,7 @@ services:
       - mongodb
     environment:
       CHOKIDAR_USEPOLLING: "true"
+      NODE_ENV: "development"
     env_file:
       - ./backend/.env.development
     ports:
