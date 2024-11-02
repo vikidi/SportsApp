@@ -15,11 +15,11 @@ services:
       - ./database/test/mongo-root-pass:/run/secrets/mongo-root-pass:ro
       - mongodbtestdata:/data/db
     networks:
-      - testnetwork
+      - testing
 
 volumes:
   mongodbtestdata:
     driver: local
 
 networks:
-  testnetwork:
+  testing:

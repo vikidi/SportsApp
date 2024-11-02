@@ -15,7 +15,7 @@ services:
       - ./database/dev/mongo-root-pass:/run/secrets/mongo-root-pass:ro
       - mongodbdata:/data/db
     networks:
-      - devnetwork
+      - app
 
   backend:
     image: sports-backend
@@ -37,8 +37,9 @@ services:
     command: npm run dev
     volumes:
       - ./backend/src:/home/app/src
+      - ./backend/logs:/home/app/logs
     networks:
-      - devnetwork
+      - app
 
   frontend:
     image: sports-frontend
@@ -60,11 +61,11 @@ services:
     volumes:
       - ./frontend/src:/home/app/src
     networks:
-      - devnetwork
+      - app
 
 volumes:
   mongodbdata:
     driver: local
 
 networks:
-  devnetwork:
+  app:

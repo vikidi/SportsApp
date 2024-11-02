@@ -4,3 +4,5 @@
 # Database secrets
 **/mongo-root-user
 **/mongo-root-pass
+
+**/.env*

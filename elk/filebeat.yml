@@ -1,0 +1,26 @@
+filebeat.inputs:
+  - type: filestream
+    id: backend
+    fields_under_root: true
+    encoding: utf-8
+    fields:
+      event.dataset: backend
+    paths:
+      - /usr/share/filebeat/logdata/*.log
+
+filebeat.autodiscover:
+  providers:
+    - type: docker
+      hints.enabled: true
+
+# TODO: Needed?
+processors:
+  - add_docker_metadata: ~
+
+setup.kibana:
+  host: ${KIBANA_HOSTS}
+  username: ${ELASTIC_USER}
+  password: ${ELASTIC_PASSWORD}
+
+output.logstash:
+  hosts: "logstash:5001"
